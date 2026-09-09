@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ecopulse
+      POSTGRES_USER: ecopulse
+      POSTGRES_PASSWORD: ecopulse
+    ports: ["5432:5432"]
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U ecopulse -d ecopulse"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/ecopulse
+      DATABASE_USER: ecopulse
+      DATABASE_PASSWORD: ecopulse
+      JWT_SECRET: change-this-development-secret-change-this-development-secret
+      ML_SERVICE_URL: http://ml-service:8000
+      CORS_ORIGIN: http://localhost:3000
+    ports: ["8080:8080"]
+    depends_on:
+      postgres: {condition: service_healthy}
+      ml-service: {condition: service_started}
+  ml-service:
+    build: ./ml-service
+    ports: ["8000:8000"]
+  frontend:
+    build: ./frontend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080/api
+    ports: ["3000:3000"]
+    depends_on: [backend]
+volumes:
+  postgres_data:

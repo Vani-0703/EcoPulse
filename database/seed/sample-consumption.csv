@@ -1,0 +1,10 @@
+timestamp,building,electricity_kwh,water_liters,waste_kg
+2026-09-01,Engineering Block,1240,8400,52
+2026-09-02,Engineering Block,1310,8600,55
+2026-09-03,Engineering Block,1780,9100,61
+2026-09-01,Central Library,820,5200,34
+2026-09-02,Central Library,850,5400,35
+2026-09-03,Central Library,870,5500,37
+2026-09-01,Administration Building,510,2100,18
+2026-09-02,Administration Building,495,2050,17
+2026-09-03,Administration Building,530,2200,19
