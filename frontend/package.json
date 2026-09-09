@@ -1,0 +1,8 @@
+{
+  "name": "ecopulse-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {"dev":"next dev","build":"next build","start":"next start","lint":"next lint","typecheck":"tsc --noEmit","test":"vitest run"},
+  "dependencies": {"@vitejs/plugin-react":"latest","next":"15.3.2","react":"19.1.0","react-dom":"19.1.0","recharts":"2.15.3","leaflet":"1.9.4","react-leaflet":"5.0.0"},
+  "devDependencies": {"@types/leaflet":"latest","@types/node":"latest","@types/react":"latest","@types/react-dom":"latest","typescript":"latest","tailwindcss":"latest","postcss":"latest","autoprefixer":"latest","vitest":"latest","jsdom":"latest","@tailwindcss/postcss":"latest"}
+}
